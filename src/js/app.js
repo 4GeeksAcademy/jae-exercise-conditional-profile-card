@@ -1,3 +1,4 @@
+import { validateSchema } from "webpack";
 import "../style/index.css";
 
 /**
@@ -28,19 +29,66 @@ function render(variables = {}) {
   // if includeCover==false then we reset the cover code without the <img> tag to make the cover transparent.
   let cover = `<div class="cover"><img src="${variables.background}" /></div>`;
   if (variables.includeCover == false) cover = "<div class='cover'></div>";
-
+  let firstName = "";
+  if (variables.name == null) {
+    firstName = "John";
+  } else {
+    firstName = variables.name;
+  }
+  let lastName = "";
+  if (variables.name == null) {
+    lastName = "Smith";
+  } else {
+    lastName = variables.lastName;
+  }
+  let twitterLink = "";
+  if (variables.twitter == null) {
+    twitterLink = "https://twitter.com/4geeksacademy";
+  } else {
+    twitterLink = variables.twitter;
+  }
+  let gitHub = "";
+  if (variables.gitHub == null) {
+    gitHub = "https://github.com/4geeksacademy";
+  } else {
+    gitHub = variables.gitHub;
+  }
+  let linkedIn = "";
+  if (variables.linkedIn == null) {
+    linkedIn = "https://linkedin.com/school/4geeksacademy";
+  } else {
+    linkedIn = variables.linkedIn;
+  }
+  let instaGram = "";
+  if (variables.instagram == null) {
+    instaGram = "https://instagram.com/4geeksacademy";
+  } else {
+    instaGram = variables.instagram;
+  }
+  let roleDropDown = "";
+  if (variables.role == null) {
+    roleDropDown = "Web Developer";
+  } else {
+    roleDropDown = variables.role;
+  }
+  let cityDropDown = "";
+  if (variables.city == null) {
+    cityDropDown = "Miami";
+  } else {
+    cityDropDown = variables.city;
+  }
   // reset the website body with the new html output
   document.querySelector("#widget_content").innerHTML = `<div class="widget">
             ${cover}
           <img src="${variables.avatarURL}" class="photo" />
-          <h1>Lucy Boilett</h1>
-          <h2>Web Developer</h2>
-          <h3>Miami, USA</h3>
+          <h1>${firstName} ${lastName}</h1>
+          <h2>${roleDropDown}</h2>
+          <h3>${cityDropDown}</h3>
           <ul class="position-right">
-            <li><a href="https://twitter.com/4geeksacademy"><i class="fab fa-twitter"></i></a></li>
-            <li><a href="https://github.com/4geeksacademy"><i class="fab fa-github"></i></a></li>
-            <li><a href="https://linkedin.com/school/4geeksacademy"><i class="fab fa-linkedin"></i></a></li>
-            <li><a href="https://instagram.com/4geeksacademy"><i class="fab fa-instagram"></i></a></li>
+            <li><a href="${twitterLink}"><i class="fab fa-twitter"></i></a></li>
+            <li><a href="${gitHub}"><i class="fab fa-github"></i></a></li>
+            <li><a href="${linkedIn}"><i class="fab fa-linkedin"></i></a></li>
+            <li><a href="${instaGram}"><i class="fab fa-instagram"></i></a></li>
           </ul>
         </div>
     `;
